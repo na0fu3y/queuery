@@ -8,32 +8,32 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: <>BigQuery</>,
+    imageUrl: 'img/BigQuery.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        AWS を使っていても、DWH だけは BigQuery って企業もあるくらいに BigQuery は強いです。
+        これを活用できるような情報発信をしていきます。
       </>
     ),
   },
   {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: <>Google Cloud Platform</>,
+    imageUrl: 'img/logo_gcp_hexagon_rgb.png',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        BigQuery を触っていると GCP を触らざるを得ません。
+        BigQuery と一緒に活用しやすいサービスの情報発信もします。
       </>
     ),
   },
   {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: <>Data Engineering</>,
+    imageUrl: 'img/data_engineer.png',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        BigQuery のおかげでデータの変換だけでなく、データの品質に着目できるようになっています。
+        データエンジニアリングに関して情報交換できたら良いと思います。
       </>
     ),
   },

@@ -1,17 +1,17 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'Queuery',
+  tagline: 'BigQuery を中心に Google Cloud Platform やデータに関する日々の発見を綴る',
+  url: 'https://queuery.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'na0fu3y', // Usually your GitHub org/user name.
+  projectName: 'queuery', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Queuery',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       links: [
         {
@@ -22,7 +22,7 @@ module.exports = {
         },
         {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/na0fu3y/queuery',
           label: 'GitHub',
           position: 'right',
         },
@@ -45,19 +45,6 @@ module.exports = {
           ],
         },
         {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-          ],
-        },
-        {
           title: 'Social',
           items: [
             {
@@ -66,16 +53,16 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/na0fu3y',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/na0fu3y',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Queuery. Built with Docusaurus.`,
     },
   },
   presets: [
