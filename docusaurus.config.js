@@ -80,4 +80,10 @@ module.exports = {
       },
     ],
   ],
+  plugins: ['@docusaurus/plugin-google-analytics'],
+  themeConfig: {
+    googleAnalytics: {
+      trackingID: 'UA-156581645-2',
+    },
+  },
 };
