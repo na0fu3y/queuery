@@ -6,6 +6,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'na0fu3y', // Usually your GitHub org/user name.
   projectName: 'queuery', // Usually your repo name.
+  plugins: ['@docusaurus/plugin-google-analytics'],
   themeConfig: {
     navbar: {
       title: 'Queuery',
@@ -64,6 +65,11 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Queuery. Built with Docusaurus.`,
     },
+    googleAnalytics: {
+      trackingID: 'UA-141789564-1',
+      // Optional fields.
+      anonymizeIP: true, // Should IPs be anonymized?
+    },
   },
   presets: [
     [
@@ -80,10 +86,4 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['@docusaurus/plugin-google-analytics'],
-  themeConfig: {
-    googleAnalytics: {
-      trackingID: 'UA-156581645-2',
-    },
-  },
 };
