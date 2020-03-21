@@ -16,7 +16,7 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/doc1',
+          to: 'docs/bigquery-access-controls',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
@@ -36,12 +36,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/doc1',
+              label: 'BigQuery アクセス権設定',
+              to: 'docs/bigquery-access-controls',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2',
+              label: 'BigQuery グループ設計例',
+              to: 'docs/bigquery-access-controls-groups',
             },
           ],
         },

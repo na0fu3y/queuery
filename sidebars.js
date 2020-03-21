@@ -1,6 +1,5 @@
 module.exports = {
   someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
+    BigQuery: ['bigquery-access-controls', 'bigquery-access-controls-groups'],
   },
 };
