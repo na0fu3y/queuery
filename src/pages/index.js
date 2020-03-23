@@ -71,7 +71,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/bigquery-access-controls')}>
+              to={useBaseUrl('docs/data-management')}>
               Get Started
             </Link>
           </div>

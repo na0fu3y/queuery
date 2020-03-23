@@ -36,12 +36,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'BigQuery アクセス権設定',
-              to: 'docs/bigquery-access-controls',
+              label: 'データマネジメントとは',
+              to: 'docs/data-management',
             },
             {
-              label: 'BigQuery グループ設計例',
-              to: 'docs/bigquery-access-controls-groups',
+              label: 'BigQuery アクセス権設定',
+              to: 'docs/bigquery-access-controls',
             },
           ],
         },
