@@ -70,6 +70,12 @@ module.exports = {
       // Optional fields.
       anonymizeIP: true, // Should IPs be anonymized?
     },
+    algolia: {
+      appId: 'app-id',
+      apiKey: 'api-key',
+      indexName: 'index-name',
+      algoliaOptions: {}, // Optional, if provided by Algolia
+    },
   },
   presets: [
     [
@@ -78,7 +84,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/na0fu3y/queuery/edit/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
