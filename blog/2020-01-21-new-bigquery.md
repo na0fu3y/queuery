@@ -54,8 +54,8 @@ Q&A 形式で、浅いところからガッツリ深いところまでリレー�
 ### Qiita
 
 ### 本
-#### [Google BigQuery: The Definitive Guide: Data Warehousing, Analytics, and Machine Learning at Scale](https://amzn.to/30HkKSb)
+#### [Google BigQuery: The Definitive Guide: Data Warehousing, Analytics, and Machine Learning at Scale](https://amzn.to/2Rx8G2p)
 超おすすめです。BigQuery の歴史から、最新の効率的なアーキテクチャまでまるっと学べます。
 
-#### [Google BigQuery](https://amzn.to/2unDvha)
+#### [Google BigQuery](https://amzn.to/3b4JZ54)
 2015 年出版と少し古いですが、日本語で BigQuery 丸ごと学ぶにはこの一冊しかありません。
