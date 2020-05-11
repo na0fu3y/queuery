@@ -1,5 +1,5 @@
 ---
-id: bigquery-ml-tensorflow
+id: bigquery-ml-matrix-factorization
 title: "BigQuery ML で Matrix Factorization"
 author: Naofumi Yamada
 author_title: Data Engineer
