@@ -1,6 +1,6 @@
 ---
 id: bigquery-ml-tensorflow
-title: "BBigQuery ML で Matrix Factorization"
+title: "BigQuery ML で Matrix Factorization"
 author: Naofumi Yamada
 author_title: Data Engineer
 author_url: https://github.com/na0fu3y
