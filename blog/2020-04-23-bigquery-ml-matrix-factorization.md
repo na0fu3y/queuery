@@ -14,6 +14,8 @@ tags: [bigquery, matrix-factorization]
 # Matrix Factorization とは
 user と item を入力として、似た rating 傾向のある人を参考に未知の rating を予想するものです。併売しそうな商品を推薦する際に使ったりできます。
 
+<!--truncate-->
+
 詳細な Matrix Factorization の方法論などは他のドキュメントを参照してください。
 
 # BigQuery ML で Matrix Factorization を使う際のハマりポイント
