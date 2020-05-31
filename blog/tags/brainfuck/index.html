@@ -4,20 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="generator" content="Docusaurus v2.0.0-alpha.56">
-<link rel="preconnect" href="https://www.google-analytics.com">
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-156581645-2","auto"),ga("set","anonymizeIp",!0),ga("send","pageview")</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script><title data-react-helmet="true">Posts tagged &quot;brainfuck&quot; | Queuery</title><meta data-react-helmet="true" property="og:title" content="Posts tagged &quot;brainfuck&quot; | Queuery"><meta data-react-helmet="true" name="description" content="Blog | Tagged &quot;brainfuck&quot;"><meta data-react-helmet="true" property="og:description" content="Blog | Tagged &quot;brainfuck&quot;"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/styles.607f1fcc.css">
-<link rel="preload" href="/styles.ae4a27f9.js" as="script">
-<link rel="preload" href="/runtime~main.fc8dcda5.js" as="script">
-<link rel="preload" href="/main.4e198c23.js" as="script">
-<link rel="preload" href="/1.5ea2da5b.js" as="script">
-<link rel="preload" href="/2.86939d9b.js" as="script">
-<link rel="preload" href="/3.2d03a7f3.js" as="script">
-<link rel="preload" href="/6875c492.e3d23058.js" as="script">
-<link rel="preload" href="/fe4e0fb3.4d85fddb.js" as="script">
-<link rel="preload" href="/7f54a593.16de269d.js" as="script">
-<link rel="preload" href="/cbe9a7b6.59d301c1.js" as="script">
-<link rel="preload" href="/9164a87a.105f3eed.js" as="script">
+<title data-react-helmet="true">Posts tagged &quot;brainfuck&quot; | Queuery</title><meta data-react-helmet="true" property="og:title" content="Posts tagged &quot;brainfuck&quot; | Queuery"><meta data-react-helmet="true" name="description" content="Blog | Tagged &quot;brainfuck&quot;"><meta data-react-helmet="true" property="og:description" content="Blog | Tagged &quot;brainfuck&quot;"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><link data-react-helmet="true" rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/styles.607f1fcc.css">
+<link rel="preload" href="/styles.ee310b21.js" as="script">
+<link rel="preload" href="/runtime~main.8cd78b48.js" as="script">
+<link rel="preload" href="/main.ff1f2fb8.js" as="script">
+<link rel="preload" href="/1.6998a94e.js" as="script">
+<link rel="preload" href="/2.6bc2c73c.js" as="script">
+<link rel="preload" href="/3.69239543.js" as="script">
+<link rel="preload" href="/6875c492.49fe3171.js" as="script">
+<link rel="preload" href="/fe4e0fb3.a02cd25a.js" as="script">
+<link rel="preload" href="/7f54a593.beb94d1e.js" as="script">
+<link rel="preload" href="/cbe9a7b6.6268a441.js" as="script">
+<link rel="preload" href="/9164a87a.4eb6b66d.js" as="script">
 </head>
 <body>
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=window.matchMedia("(prefers-color-scheme: dark)"),n=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();null!==n?t(n):e.matches&&t("dark")}()</script><div id="__docusaurus">
@@ -26,16 +24,16 @@
 ハマらないポイントは、Google ドライブの設計理念に従うことです。</p></section><footer class="row margin-vert--lg"><div class="col"><strong>Tags:</strong><a class="margin-horiz--sm" href="/blog/tags/bigquery">bigquery</a><a class="margin-horiz--sm" href="/blog/tags/brainfuck">brainfuck</a></div><div class="col text--right"><a aria-label="Read more about Google 共有ドライブ設計論" href="/blog/google-drive-design"><strong>Read More</strong></a></div></footer></article><article class="margin-bottom--xl"><header><h2 class="margin-bottom--sm blogPostTitle_2RZH"><a href="/blog/date-and-time-data-types-in-bigquery">BigQuery 日時型</a></h2><div class="margin-vert--md"><time datetime="2020-01-26T00:00:00.000Z" class="blogPostDate_3tRe">January 26, 2020  · 1 min read</time></div><div class="avatar margin-vert--md"><a class="avatar__photo-link avatar__photo" href="https://github.com/na0fu3y" target="_blank" rel="noreferrer noopener"><img src="https://avatars0.githubusercontent.com/u/17900178?s=400&amp;v=4" alt="Naofumi Yamada"></a><div class="avatar__intro"><h4 class="avatar__name"><a href="https://github.com/na0fu3y" target="_blank" rel="noreferrer noopener">Naofumi Yamada</a></h4><small class="avatar__subtitle">Data Engineer</small></div></div></header><section class="markdown"><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="はじめに"></a>はじめに<a aria-hidden="true" tabindex="-1" class="hash-link" href="#はじめに" title="Direct link to heading">#</a></h1><p><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#date-type" target="_blank" rel="noopener noreferrer">日時型</a> は、時系列データを扱う際、必須のデータ型です。まずは公式ドキュメントを読み漁りましょう。</p></section><footer class="row margin-vert--lg"><div class="col"><strong>Tags:</strong><a class="margin-horiz--sm" href="/blog/tags/bigquery">bigquery</a><a class="margin-horiz--sm" href="/blog/tags/brainfuck">brainfuck</a></div><div class="col text--right"><a aria-label="Read more about BigQuery 日時型" href="/blog/date-and-time-data-types-in-bigquery"><strong>Read More</strong></a></div></footer></article><article class="margin-bottom--xl"><header><h2 class="margin-bottom--sm blogPostTitle_2RZH"><a href="/blog/brainfuck-in-bigquery">BigQuery Scripting で Brainf*ck</a></h2><div class="margin-vert--md"><time datetime="2020-01-21T00:00:00.000Z" class="blogPostDate_3tRe">January 21, 2020  · 5 min read</time></div><div class="avatar margin-vert--md"><a class="avatar__photo-link avatar__photo" href="https://github.com/na0fu3y" target="_blank" rel="noreferrer noopener"><img src="https://avatars0.githubusercontent.com/u/17900178?s=400&amp;v=4" alt="Naofumi Yamada"></a><div class="avatar__intro"><h4 class="avatar__name"><a href="https://github.com/na0fu3y" target="_blank" rel="noreferrer noopener">Naofumi Yamada</a></h4><small class="avatar__subtitle">Data Engineer</small></div></div></header><section class="markdown"><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="書いた動機"></a>書いた動機<a aria-hidden="true" tabindex="-1" class="hash-link" href="#書いた動機" title="Direct link to heading">#</a></h1><p>BigQuery 中心アーキテクチャでは、統計分析や機械学習のデータ準備を、Cloud Composer などから SQL を使ったデータ変換によって実現する。しかし、直列でデータ変換を行う場合には <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/scripting" target="_blank" rel="noopener noreferrer">標準 SQL のスクリプト</a> で十分なケースもあり、開発をしてつらくないなら採用したい思いがあった。
 先日のサイレントアップデートで、小さなクエリの高速化が行われたことから、十分な速度がでると予想した。
 BigQuery で Brainf*ck を実現して、チューリング完全であることを確認したかった。欲を言えば SELECT 文だけで実現したいが、再帰 WITH 句が使えないことから自分には実現手段がわからなかった。スクリプトならできると思い、やってみた。</p></section><footer class="row margin-vert--lg"><div class="col"><strong>Tags:</strong><a class="margin-horiz--sm" href="/blog/tags/bigquery">bigquery</a><a class="margin-horiz--sm" href="/blog/tags/brainfuck">brainfuck</a></div><div class="col text--right"><a aria-label="Read more about BigQuery Scripting で Brainf*ck" href="/blog/brainfuck-in-bigquery"><strong>Read More</strong></a></div></footer></article></div></div></div></div></div><footer class="footer footer--dark"><div class="container"><div class="row footer__links"><div class="col footer__col"><h4 class="footer__title">Docs</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/docs/data-management">データマネジメントとは</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/bigquery-access-controls">BigQuery アクセス権設定</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Social</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/na0fu3y" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub</a></li><li class="footer__item"><a href="https://twitter.com/na0fu3y" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter</a></li></ul></div></div><div class="text--center"><div>Copyright © 2020 Queuery. Built with Docusaurus.</div></div></div></footer></div>
-<script src="/styles.ae4a27f9.js"></script>
-<script src="/runtime~main.fc8dcda5.js"></script>
-<script src="/main.4e198c23.js"></script>
-<script src="/1.5ea2da5b.js"></script>
-<script src="/2.86939d9b.js"></script>
-<script src="/3.2d03a7f3.js"></script>
-<script src="/6875c492.e3d23058.js"></script>
-<script src="/fe4e0fb3.4d85fddb.js"></script>
-<script src="/7f54a593.16de269d.js"></script>
-<script src="/cbe9a7b6.59d301c1.js"></script>
-<script src="/9164a87a.105f3eed.js"></script>
+<script src="/styles.ee310b21.js"></script>
+<script src="/runtime~main.8cd78b48.js"></script>
+<script src="/main.ff1f2fb8.js"></script>
+<script src="/1.6998a94e.js"></script>
+<script src="/2.6bc2c73c.js"></script>
+<script src="/3.69239543.js"></script>
+<script src="/6875c492.49fe3171.js"></script>
+<script src="/fe4e0fb3.a02cd25a.js"></script>
+<script src="/7f54a593.beb94d1e.js"></script>
+<script src="/cbe9a7b6.6268a441.js"></script>
+<script src="/9164a87a.4eb6b66d.js"></script>
 </body>
 </html>
