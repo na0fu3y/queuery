@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[49],{182:function(e){e.exports=JSON.parse('{"allTagsPath":"/queuery/blog/tags","slug":"bigquery","name":"bigquery","count":15,"permalink":"/queuery/blog/tags/bigquery"}')}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[58],{191:function(e){e.exports=JSON.parse('{"allTagsPath":"/queuery/blog/tags","slug":"prefect","name":"prefect","count":1,"permalink":"/queuery/blog/tags/prefect"}')}}]);
