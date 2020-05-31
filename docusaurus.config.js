@@ -1,8 +1,8 @@
 module.exports = {
   title: 'Queuery',
   tagline: 'BigQuery を中心に Google Cloud Platform やデータに関する日々の発見を綴る',
-  url: 'https://na0fu3y.github.io',
-  baseUrl: '/queuery/',
+  url: 'https://queuery.com',
+  baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'na0fu3y', // Usually your GitHub org/user name.
   projectName: 'queuery', // Usually your repo name.
