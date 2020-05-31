@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[39],{173:function(e){e.exports=JSON.parse('{"permalink":"/queuery/blog","page":1,"postsPerPage":10,"totalPages":2,"totalCount":18,"previousPage":null,"nextPage":"/queuery/blog/page/2"}')}}]);

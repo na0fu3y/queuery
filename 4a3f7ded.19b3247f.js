@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[19],{153:function(a){a.exports=JSON.parse('{"allTagsPath":"/queuery/blog/tags","slug":"brainfuck","name":"brainfuck","count":3,"permalink":"/queuery/blog/tags/brainfuck"}')}}]);
