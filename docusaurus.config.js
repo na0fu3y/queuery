@@ -64,6 +64,9 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Queuery. Built with Docusaurus.`,
     },
+    googleAnalytics: {
+      trackingID: 'UA-156581645-3',
+    },
   },
   presets: [
     [
