@@ -11,6 +11,9 @@ tags: [python, docker]
 # Python の環境 / パッケージ管理色々ありすぎ問題
 Python の仮想環境やパッケージ管理周りのツールは種類が多くてどれ使ったら良いか分からないですね。
 古参の Pip 派もいれば、安定の Pipenv、toml カッコ良いから Poetry、Pyflow など。
+
+<!--truncate-->
+
 - Pip
 - conda
 - Pipenv
