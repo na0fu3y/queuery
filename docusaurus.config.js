@@ -64,7 +64,7 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Queuery. Built with Docusaurus.`,
     },
-    googleAnalytics: {
+    gtag: {
       trackingID: 'UA-156581645-3',
     },
   },
@@ -72,10 +72,24 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
+        blog: {
+          editUrl:
+            'https://github.com/na0fu3y/queuery/edit/master/',
+          feedOptions: {
+            type: 'all',
+            language: 'ja',
+          },
+        },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/na0fu3y/queuery/edit/master/',
+          showLastUpdateTime: true,
+        },
+        sitemap: {
+          cacheTime: 600 * 1000, // 600 sec - cache purge period
+          changefreq: 'weekly',
+          priority: 0.5,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
