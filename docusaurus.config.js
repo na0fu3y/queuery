@@ -77,6 +77,7 @@ module.exports = {
             'https://github.com/na0fu3y/queuery/edit/master/',
           feedOptions: {
             type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} Queuery. Built with Docusaurus.`,
             language: 'ja',
           },
         },
