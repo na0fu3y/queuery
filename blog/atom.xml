@@ -7,6 +7,7 @@
     <link rel="alternate" href="https://queuery.com/blog"/>
     <subtitle>Queuery Blog</subtitle>
     <icon>https://queuery.com/img/favicon.ico</icon>
+    <rights>Copyright © 2020 Queuery. Built with Docusaurus.</rights>
     <entry>
         <title type="html"><![CDATA[BigQuery MLにAutoML Tables、XGBoost、DNNが来たのでおさらい]]></title>
         <id>bigquery-ml-automl</id>
