@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{136:function(a){a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"bigqueryml","name":"bigqueryml","count":1,"permalink":"/blog/tags/bigqueryml"}')}}]);
