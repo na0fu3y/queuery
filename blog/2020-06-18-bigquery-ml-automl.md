@@ -13,7 +13,8 @@ tags: [bigquery, bigqueryml, automl, xgboost, dnn]
 
 おさらいに、BigQuery MLで何ができるか再整理します。
 
-<!--truncate-->
+追記:
+日本時間2020-06-28のリリースで、BigQuery MLにARIMAも来ましたが、2020-06-29時点で利用できません。ロケーション問わず`Unsupported model type: ARIMA`になります。[release-notes#June_26_2020](https://cloud.google.com/bigquery-ml/docs/release-notes#June_26_2020)
 
 # BigQuery MLでできること概要
 BigQueryでStandard SQLを使って、機械学習モデルを訓練、推論できます。
@@ -84,6 +85,11 @@ DNNはそこそこの自由度を持って学習できます。秘伝のDNNが�
 
 （以前はTensorFlow SavedModelを用いて、手間をかければ推論することだけはできてました。）
 
+## ARIMA
+ARIMAはフルに自由度を持ってパラメータ設定ができますね。DNN同様、秘伝のARIMAがあっても安心でしょう。
+
+最近では機械学習が第一選択薬になることも多くなりましたが、非定常過程では古典的な計量時系列分析が現役な場合もARIMAすね。組み合わせて多段に使うのもVIEWを用意して、フルマネージドでBigQuery ML完結すると扱いやすいかもしれません。
+
 # いくらかかるんだっけ
 ## BigQuery定額料金
 BigQuery定額料金プランの場合、BigQuery MLも自由に使うことができます。
@@ -103,10 +109,16 @@ Reservationsを使っていて、外部モデル（AutoML Tables、Boosted Tree�
 外部モデルの学習や推論は、BigQuery同様の参照量です。
 内部モデルの学習はBigQueryの参照50回分です（イテレーション回数の最大値と同等）。
 
+追記：
+ARIMAは実行可能になり次第調査します。
+
 # 制限は？
 プロジェクトごとに1日あたりCREATE MODELは1,000回に制限されています。
 
 # BigQuery MLでできること
+
+追記：
+ARIMAは実行可能になり次第調査、追記します。
 
 ## 機械学習が1クエリで
 以下のモデルの学習が1クエリでできます。もちろん、推論、メタデータの取得も1クエリです。
@@ -119,7 +131,6 @@ Reservationsを使っていて、外部モデル（AutoML Tables、Boosted Tree�
 - Boosted Tree classification/regression
 - AutoML Tables classification/regression
 - Deep Neural Network (DNN) classification/regression
-- TensorFlow SavedModel（推論のみサポート、訓練は別途行う必要がある）
 
 膨大ですね。Boosted TreeやAutoML Tablesが来たのでおおよそのタスクはBigQuery MLで充足するのではないでしょうか。
 
@@ -161,6 +172,22 @@ BigQuery MLのモデルは全てTensorFlow SavedModel形式でエクスポート
 - Boosted Tree classification/regression
 - AutoML Tables classification/regression
 - Deep Neural Network (DNN) classification/regression
+
+## モデルのインポート
+BigQuery MLのエクスポートしたモデルの他、全てのTensorFlow SavedModelをインポートすることができます。ただ、TensorFlow SavedModelのインポート時は制約が強めなので、注意してください。気になる制約は以下の3つですね。
+
+- モデルのサイズは 250 MB に制限されています。
+- バージョン 20 より前のバージョンの GraphDef を使用してトレーニングされたモデルはサポートされていません。
+- コアの TensorFlow オペレーションのみサポートされています。カスタム オペレーションや tf.contrib オペレーションを使用するモデルはサポートされていません。
+
+また、AutoML Tablesのエクスポートモデルをインポートすると`Error while reading data, error message: TensorFlow model cannot be parsed within the memory limit; try reducing the model size`になったため、全てのSavedModelがエクスポート可能とは限らないようです（フォルダサイズは46MBで、250MB以下）。
+
+デプロイ先を統一する際には、BigQuery MLより、AI Platformの方が安心かもしれません。
+
+## 現状不明な点
+以下の点は不明な部分であり、検証したいです。
+- BigQuery MLで6時間を超える時の挙動（AutoMLで6.0<BUDGET_HOURSとか）
+- BigQuery ScriptingにBigQuery MLを挟んで、合計6時間を超える時の挙動。
 
 # おわりに
 BigQuery MLで、AutoML Tables、XGBoost、DNNが使えるようになりました。そもそも便利関数が用意されていたBigQuery MLですが、一層、BigQueryからデータを外に出さずに使えるようになりますね。
