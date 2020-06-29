@@ -16,18 +16,18 @@
         <summary type="html"><![CDATA[はじめに]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Prefect 触ってみた]]></title>
-        <id>prefect</id>
-        <link href="https://queuery.com/blog/prefect"/>
-        <updated>2020-05-11T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Prefect 触ってみた]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Python 開発環境の Docker 化]]></title>
         <id>python-docker</id>
         <link href="https://queuery.com/blog/python-docker"/>
         <updated>2020-05-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Python の環境 / パッケージ管理色々ありすぎ問題]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Prefect 触ってみた]]></title>
+        <id>prefect</id>
+        <link href="https://queuery.com/blog/prefect"/>
+        <updated>2020-05-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Prefect 触ってみた]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[BigQuery ML で Matrix Factorization]]></title>
@@ -65,16 +65,16 @@
         <summary type="html"><![CDATA[目的]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[BigQuery 日時型]]></title>
-        <id>date-and-time-data-types-in-bigquery</id>
-        <link href="https://queuery.com/blog/date-and-time-data-types-in-bigquery"/>
+        <title type="html"><![CDATA[BigQuery テーブル同士の一致判定]]></title>
+        <id>two-tables-have-exactly-the-same-data-in-bigquery</id>
+        <link href="https://queuery.com/blog/two-tables-have-exactly-the-same-data-in-bigquery"/>
         <updated>2020-01-26T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[はじめに]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[BigQuery テーブル同士の一致判定]]></title>
-        <id>two-tables-have-exactly-the-same-data-in-bigquery</id>
-        <link href="https://queuery.com/blog/two-tables-have-exactly-the-same-data-in-bigquery"/>
+        <title type="html"><![CDATA[BigQuery 日時型]]></title>
+        <id>date-and-time-data-types-in-bigquery</id>
+        <link href="https://queuery.com/blog/date-and-time-data-types-in-bigquery"/>
         <updated>2020-01-26T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[はじめに]]></summary>
     </entry>

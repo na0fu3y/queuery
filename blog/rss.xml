@@ -17,18 +17,18 @@
             <description><![CDATA[はじめに]]></description>
         </item>
         <item>
-            <title><![CDATA[Prefect 触ってみた]]></title>
-            <link>https://queuery.com/blog/prefect</link>
-            <guid>prefect</guid>
-            <pubDate>Mon, 11 May 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[Prefect 触ってみた]]></description>
-        </item>
-        <item>
             <title><![CDATA[Python 開発環境の Docker 化]]></title>
             <link>https://queuery.com/blog/python-docker</link>
             <guid>python-docker</guid>
             <pubDate>Mon, 11 May 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Python の環境 / パッケージ管理色々ありすぎ問題]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Prefect 触ってみた]]></title>
+            <link>https://queuery.com/blog/prefect</link>
+            <guid>prefect</guid>
+            <pubDate>Mon, 11 May 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Prefect 触ってみた]]></description>
         </item>
         <item>
             <title><![CDATA[BigQuery ML で Matrix Factorization]]></title>
@@ -66,16 +66,16 @@
             <description><![CDATA[目的]]></description>
         </item>
         <item>
-            <title><![CDATA[BigQuery 日時型]]></title>
-            <link>https://queuery.com/blog/date-and-time-data-types-in-bigquery</link>
-            <guid>date-and-time-data-types-in-bigquery</guid>
+            <title><![CDATA[BigQuery テーブル同士の一致判定]]></title>
+            <link>https://queuery.com/blog/two-tables-have-exactly-the-same-data-in-bigquery</link>
+            <guid>two-tables-have-exactly-the-same-data-in-bigquery</guid>
             <pubDate>Sun, 26 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[はじめに]]></description>
         </item>
         <item>
-            <title><![CDATA[BigQuery テーブル同士の一致判定]]></title>
-            <link>https://queuery.com/blog/two-tables-have-exactly-the-same-data-in-bigquery</link>
-            <guid>two-tables-have-exactly-the-same-data-in-bigquery</guid>
+            <title><![CDATA[BigQuery 日時型]]></title>
+            <link>https://queuery.com/blog/date-and-time-data-types-in-bigquery</link>
+            <guid>date-and-time-data-types-in-bigquery</guid>
             <pubDate>Sun, 26 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[はじめに]]></description>
         </item>
