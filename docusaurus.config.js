@@ -1,3 +1,8 @@
+
+const allDocHomesPaths = [
+  '/docs/',
+];
+
 module.exports = {
   title: 'Queuery',
   tagline: 'BigQuery を中心に Google Cloud Platform やデータに関する日々の発見を綴る',
