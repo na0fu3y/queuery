@@ -15,7 +15,7 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/bigquery-access-controls',
+          to: 'docs/introduction',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
@@ -68,6 +68,21 @@ module.exports = {
       trackingID: 'UA-156581645-3',
     },
   },
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html'],
+        createRedirects: function (path) {
+          // redirect to /docs from /docs/introduction,
+          // as introduction has been made the home doc
+          if (allDocHomesPaths.includes(path)) {
+            return [`${path}/introduction`];
+          }
+        },
+      },
+    ],
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
