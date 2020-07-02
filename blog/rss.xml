@@ -4,18 +4,11 @@
         <title>Queuery Blog</title>
         <link>https://queuery.com/blog</link>
         <description>Queuery Blog</description>
-        <lastBuildDate>Wed, 01 Jul 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 18 Jun 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
         <copyright>Copyright © 2020 Queuery. Built with Docusaurus.</copyright>
-        <item>
-            <title><![CDATA[機械学習システムの技術的負債を評価する方法論]]></title>
-            <link>https://queuery.com/blog/ml-test-score</link>
-            <guid>ml-test-score</guid>
-            <pubDate>Wed, 01 Jul 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[はじめに]]></description>
-        </item>
         <item>
             <title><![CDATA[BigQuery MLにAutoML Tables、XGBoost、DNNが来たのでおさらい]]></title>
             <link>https://queuery.com/blog/bigquery-ml-automl</link>
@@ -115,18 +108,18 @@
             <description><![CDATA[やりたいこと]]></description>
         </item>
         <item>
-            <title><![CDATA[BigQuery Scripting で Brainf*ck]]></title>
-            <link>https://queuery.com/blog/brainfuck-in-bigquery</link>
-            <guid>brainfuck-in-bigquery</guid>
-            <pubDate>Tue, 21 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[書いた動機]]></description>
-        </item>
-        <item>
             <title><![CDATA[BigQuery で 1 円も溶かさない人の顔 (ZERO BYTE STRUCT を考案した)]]></title>
             <link>https://queuery.com/blog/bigquery-sandbox</link>
             <guid>bigquery-sandbox</guid>
             <pubDate>Tue, 21 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[この記事は Qiita と同様の内容です。]]></description>
+        </item>
+        <item>
+            <title><![CDATA[BigQuery Scripting で Brainf*ck]]></title>
+            <link>https://queuery.com/blog/brainfuck-in-bigquery</link>
+            <guid>brainfuck-in-bigquery</guid>
+            <pubDate>Tue, 21 Jan 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[書いた動機]]></description>
         </item>
         <item>
             <title><![CDATA[【解決済】Cloud IAM でサービスエージェントから全権限を削除すると見えなくなる]]></title>
