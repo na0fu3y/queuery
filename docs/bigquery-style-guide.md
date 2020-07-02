@@ -1,7 +1,7 @@
 ---
 id: bigquery-style-guide
 title: "BigQueryコーディングスタイル"
-sidebar_label: "BigQueryコーディングスタイル"
+sidebar_label: "コーディングスタイル"
 ---
 
 # この記事の趣旨
