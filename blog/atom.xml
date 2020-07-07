@@ -2,19 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://queuery.com/blog</id>
     <title>Queuery Blog</title>
-    <updated>2020-06-18T00:00:00.000Z</updated>
+    <updated>2020-05-11T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://queuery.com/blog"/>
     <subtitle>Queuery Blog</subtitle>
     <icon>https://queuery.com/img/favicon.ico</icon>
     <rights>Copyright © 2020 Queuery. Built with Docusaurus.</rights>
-    <entry>
-        <title type="html"><![CDATA[BigQuery MLにAutoML Tables、XGBoost、DNNが来たのでおさらい]]></title>
-        <id>bigquery-ml-automl</id>
-        <link href="https://queuery.com/blog/bigquery-ml-automl"/>
-        <updated>2020-06-18T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[はじめに]]></summary>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Prefect 触ってみた]]></title>
         <id>prefect</id>
@@ -30,46 +23,11 @@
         <summary type="html"><![CDATA[Python の環境 / パッケージ管理色々ありすぎ問題]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[BigQuery ML で Matrix Factorization]]></title>
-        <id>bigquery-ml-matrix-factorization</id>
-        <link href="https://queuery.com/blog/bigquery-ml-matrix-factorization"/>
-        <updated>2020-04-23T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[BigQuery ML に Matrix Factorization が来た]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[BigQuery ML で使える TensorFlow モデルを作る]]></title>
-        <id>bigquery-ml-tensorflow</id>
-        <link href="https://queuery.com/blog/bigquery-ml-tensorflow"/>
-        <updated>2020-02-16T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[はじめに]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Google 共有ドライブ設計論]]></title>
-        <id>google-drive-design</id>
-        <link href="https://queuery.com/blog/google-drive-design"/>
-        <updated>2020-01-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[はじめに]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Stackdriver Logging でできること]]></title>
         <id>gcp-logging</id>
         <link href="https://queuery.com/blog/gcp-logging"/>
         <updated>2020-01-28T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[この記事は Stackdriver LoggingとBQシンクの差（料金と検索性、保存期間）を知りたい の対応記事です。rhoboro さん、依頼ありがとうございます。]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[BigQuery データ品質のチェック方針]]></title>
-        <id>data-quality</id>
-        <link href="https://queuery.com/blog/data-quality"/>
-        <updated>2020-01-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[目的]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[BigQuery 日時型]]></title>
-        <id>date-and-time-data-types-in-bigquery</id>
-        <link href="https://queuery.com/blog/date-and-time-data-types-in-bigquery"/>
-        <updated>2020-01-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[はじめに]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[BigQuery テーブル同士の一致判定]]></title>
@@ -86,20 +44,6 @@
         <summary type="html"><![CDATA[やること]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[BigQuery 数値型]]></title>
-        <id>numerical-data-types-in-bigquery</id>
-        <link href="https://queuery.com/blog/numerical-data-types-in-bigquery"/>
-        <updated>2020-01-23T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[はじめに]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[安い速い旨い BigQuery の 19 の最適化法]]></title>
-        <id>bigquery-cost-performance-tuning</id>
-        <link href="https://queuery.com/blog/bigquery-cost-performance-tuning"/>
-        <updated>2020-01-22T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[この記事は Qiita と同様の内容です。]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Stackdriver Logging を用いて BigQuery テーブルの最終参照日を求める]]></title>
         <id>bigquery-last-reference-date</id>
         <link href="https://queuery.com/blog/bigquery-last-reference-date"/>
@@ -112,13 +56,6 @@
         <link href="https://queuery.com/blog/bigquery-sandbox"/>
         <updated>2020-01-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[この記事は Qiita と同様の内容です。]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[BigQuery Scripting で Brainf*ck]]></title>
-        <id>brainfuck-in-bigquery</id>
-        <link href="https://queuery.com/blog/brainfuck-in-bigquery"/>
-        <updated>2020-01-21T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[書いた動機]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[【解決済】Cloud IAM でサービスエージェントから全権限を削除すると見えなくなる]]></title>

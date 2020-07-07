@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[65],{202:function(o){o.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"xgboost","name":"xgboost","count":1,"permalink":"/blog/tags/xgboost"}')}}]);
