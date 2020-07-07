@@ -1,11 +1,6 @@
-
-const allDocHomesPaths = [
-  '/docs/',
-];
-
 module.exports = {
   title: 'Queuery',
-  tagline: 'BigQuery を中心に Google Cloud Platform やデータに関する日々の発見を綴る',
+  tagline: 'BigQueryを中心にデータに関する日々の発見を綴る',
   url: 'https://queuery.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -20,12 +15,16 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/introduction',
+          to: 'docs/',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+        {
+          to: 'blog',
+          label: 'Blog',
+          position: 'left'
+        },
         {
           href: 'https://github.com/na0fu3y/queuery',
           label: 'GitHub',
@@ -53,16 +52,16 @@ module.exports = {
           title: 'Social',
           items: [
             {
-              label: 'Blog',
-              to: 'blog',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/na0fu3y',
             },
             {
               label: 'Twitter',
               href: 'https://twitter.com/na0fu3y',
+            },
+            {
+              label: 'Qiita',
+              href: 'https://qiita.com/na0',
             },
           ],
         },
@@ -73,21 +72,6 @@ module.exports = {
       trackingID: 'UA-156581645-3',
     },
   },
-  plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        fromExtensions: ['html'],
-        createRedirects: function (path) {
-          // redirect to /docs from /docs/introduction,
-          // as introduction has been made the home doc
-          if (allDocHomesPaths.includes(path)) {
-            return [`${path}/introduction`];
-          }
-        },
-      },
-    ],
-  ],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -102,6 +86,7 @@ module.exports = {
           },
         },
         docs: {
+          homePageId: 'introduction',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/na0fu3y/queuery/edit/master/',
