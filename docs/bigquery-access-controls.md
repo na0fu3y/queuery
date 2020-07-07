@@ -4,11 +4,11 @@ title: "BigQuery アクセス権設定"
 sidebar_label: アクセス権設定
 ---
 
-# アクセス権の設定方法
+## アクセス権の設定方法
 BigQuery リソースのアクセス権設定にあたり、覚えておく軸は 3 つです。
 具体的な人間やアカウントを示す `メンバー`、権限範囲の対象（プロジェクトやデータセット）を示す `対象レイヤ`、具体的な個々の `権限`、これらをおさえておけば、BigQuery の権限設定は安心です。
 
-## メンバーは Google アカウントを筆頭に 5 種類
+### メンバーは Google アカウントを筆頭に 5 種類
 以下のメンバーに対して個別に役割を振ることができます。グループやドメインは自由に作成が可能です。
 
 - Google アカウント
@@ -20,7 +20,7 @@ BigQuery リソースのアクセス権設定にあたり、覚えておく軸�
 またこれらの認証を持つ全利用者を示す `allAuthenticatedUsers` と全利用者 `allUsers` のグループが存在します。
 
 
-## 対象レイヤの設定は Cloud IAM、共有データセット、Table access controls、承認済みビュー、列レベルのセキュリティ、Cloud IAM Conditions の 6 種類
+### 対象レイヤの設定は Cloud IAM、共有データセット、Table access controls、承認済みビュー、列レベルのセキュリティ、Cloud IAM Conditions の 6 種類
 
 組織レベルおよびプロジェクトに対してアクセス権を付与する際に `Cloud IAM` を、
 データセットに対してアクセス権を付与する際に `共有データセット` を、
@@ -31,36 +31,36 @@ BigQuery リソースのアクセス権設定にあたり、覚えておく軸�
 
 これだけ覚えておけば、あとはリファレンスを見ながら設定できます。
 
-### [Cloud IAM](https://cloud.google.com/iam/docs/overview)
+#### [Cloud IAM](https://cloud.google.com/iam/docs/overview)
 Cloud IAM は上記 5 種類のメンバーに対して、組織レベルおよびプロジェクトレベルのアクセス権を付与します。
 
-### [共有データセット](https://cloud.google.com/bigquery/docs/dataset-access-controls)
+#### [共有データセット](https://cloud.google.com/bigquery/docs/dataset-access-controls)
 共有データセットはメンバーに対して、データセットレベルのアクセス権を付与します。
 設定は、データセットの詳細から、共有データセットを選択すると Cloud IAM と同じアクセス権限設定を行うことができます。
 
-### [table access controls](https://cloud.google.com/bigquery/docs/table-access-controls-intro)
+#### [table access controls](https://cloud.google.com/bigquery/docs/table-access-controls-intro)
 table access controlsはメンバに対して、テーブルレベルのアクセス権を付与します。
 設定は、テーブルの詳細から、テーブルの権限を選択すると Cloud IAM と同じアクセス権限設定を行うことができます。
 
-### [承認済みビュー](https://cloud.google.com/bigquery/docs/authorized-views)
+#### [承認済みビュー](https://cloud.google.com/bigquery/docs/authorized-views)
 承認済みビューはメンバーに対して、テーブルや、列、行レベルのアクセス権を（疑似的に）付与します。
 参照元のテーブルへのアクセス権がないユーザーにも共有でき、SESSION_USER 関数を用いて、ユーザーごとのクエリを実行できる列を制限したりできます。
 設定は、共有データセットから、データセットの権限、承認済みのビューと進めます。
 
-### [列レベルのセキュリティ](https://cloud.google.com/bigquery/docs/column-level-security-intro)
+#### [列レベルのセキュリティ](https://cloud.google.com/bigquery/docs/column-level-security-intro)
 列レベルのセキュリティは、列ごとに 1 つのアクセス権を設定できます。
 予め人ごとにアクセス権レベルを振っておき、列アクセスを制限したいときに使えます。
 承認済みビューよりも静的な設定に向いているように見えます。
 設定は、テーブルからスキーマを編集に行くと、ポリシータグを追加できます。
 
-### [Cloud IAM Conditions](https://cloud.google.com/iam/docs/conditions-overview)
+#### [Cloud IAM Conditions](https://cloud.google.com/iam/docs/conditions-overview)
 Cloud IAM Conditions は Cloud IAM のアクセス権を `実行時の状態` によって切り替えることができます。対象テーブル名や実行時間などによって、権限を制限できます。終了が明確な場合の権限剥奪漏れや、定時内のみ実行可能な権限を用意してホワイト企業演出に活用できます。
 限定公開ベータ版のため、Cloud IAM Conditions の申請をした上で、Cloud IAM から設定します。
 
-## 権限は大きく 9 種類
+### 権限は大きく 9 種類
 [事前定義された役割と権限](https://cloud.google.com/bigquery/docs/access-control) を参考に説明をつけて BigQuery で使用可能な権限を記載します。
 
-### ジョブ（クエリを含む）
+#### ジョブ（クエリを含む）
 クエリを実行したり、データをコピーしたり、BigQuery のあらゆる実行権限を担います。
 逆に言えば、これらの権限を与えなければ、そのプロジェクトの配下で一切のジョブを走らせることができなくなります。
 
@@ -73,7 +73,7 @@ Cloud IAM Conditions は Cloud IAM のアクセス権を `実行時の状態` �
 | bigquery.jobs.update | ジョブをキャンセルします。ジョブを作成すると、ジョブの作成者に、そのジョブの bigquery.jobs.get 権限および bigquery.jobs.update 権限に相当する権限が自動的に付与されます。 |
 
 
-### データセット
+#### データセット
 データセットの CRUD に関する権限です。
 
 | 権限 | 説明 |
@@ -84,7 +84,7 @@ Cloud IAM Conditions は Cloud IAM のアクセス権を `実行時の状態` �
 | bigquery.datasets.update | データセットのメタデータを更新します。 |
 
 
-### テーブル
+#### テーブル
 テーブルの CRUD に関する権限です。
 
 | 権限 | 説明 |
@@ -99,7 +99,7 @@ Cloud IAM Conditions は Cloud IAM のアクセス権を `実行時の状態` �
 | bigquery.tables.updateData | テーブルのデータを更新します。テーブルのメタデータを更新するには、bigquery.tables.update が必要です。 |
 
 
-### 関数とストアド プロシージャ
+#### 関数とストアド プロシージャ
 関数とストアド プロシージャの CRUD に関する権限です。
 
 | 権限 | 説明 |
@@ -111,7 +111,7 @@ Cloud IAM Conditions は Cloud IAM のアクセス権を `実行時の状態` �
 | bigquery.routines.update | ルーティンの定義とメタデータを更新します。 |
 
 
-### BigQuery Data Transfer Service
+#### BigQuery Data Transfer Service
 BigQuery Data Transfer Service の実行に関する権限です。
 
 | 権限 | 説明 |
@@ -120,7 +120,7 @@ BigQuery Data Transfer Service の実行に関する権限です。
 | bigquery.transfers.update | 転送を作成、更新、削除します。 |
 
 
-### 保存したクエリ
+#### 保存したクエリ
 保存したクエリの CRUD に関する権限です。
 
 | 権限 | 説明 |
@@ -131,7 +131,7 @@ BigQuery Data Transfer Service の実行に関する権限です。
 | bigquery.savedqueries.update | 保存したクエリを更新します。 |
 | bigquery.savedqueries.delete | 保存したクエリを削除します。 |
 
-### Storage API
+#### Storage API
 Storage API 経由の読み取りに関する権限です。
 
 
@@ -139,7 +139,7 @@ Storage API 経由の読み取りに関する権限です。
 |:--|:--|
 | bigquery.readsessions.create | BigQuery Storage API を介した新しい読み取りセッションを作成します。 |
 
-### 外部データソース
+#### 外部データソース
 外部データソースの接続に関する権限です。
 
 | 権限 | 説明 |
@@ -151,7 +151,7 @@ Storage API 経由の読み取りに関する権限です。
 | bigquery.connections.update | 接続とその認証情報を更新します。 |
 | bigquery.connections.delete | 接続を削除します。 |
 
-### Reservations
+#### Reservations
 Reservations（容量コミットメントの予約）に関する権限です。
 
 | 権限 | 説明 |
