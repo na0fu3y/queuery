@@ -8,7 +8,7 @@ title: "おさらい"
 おさらいに、BigQuery MLで何ができるか再整理します。
 
 追記:
-日本時間2020-06-28のリリースで、BigQuery MLにARIMAも来ましたが、2020-06-29時点で利用できません。ロケーション問わず`Unsupported model type: ARIMA`になります。[release-notes#June_26_2020](https://cloud.google.com/bigquery-ml/docs/release-notes#June_26_2020)
+日本時間2020-07-02のリリースで、BigQuery MLにARIMAも来ましたね。日本時間2020-06-28のリリースノートでエラーになってたのですが、リリース日がしれっと修正されてました。[release-notes#July_01_2020](https://cloud.google.com/bigquery-ml/docs/release-notes#July_01_2020)
 
 ## BigQuery MLでできること概要
 BigQueryでStandard SQLを使って、機械学習モデルを訓練、推論できます。
@@ -125,6 +125,7 @@ ARIMAは実行可能になり次第調査、追記します。
 - Boosted Tree classification/regression
 - AutoML Tables classification/regression
 - Deep Neural Network (DNN) classification/regression
+- ARIMA(time series)
 
 膨大ですね。Boosted TreeやAutoML Tablesが来たのでおおよそのタスクはBigQuery MLで充足するのではないでしょうか。
 
@@ -159,7 +160,7 @@ WHERE
 ```
 
 ### [モデルのエクスポート](https://cloud.google.com/bigquery-ml/docs/exporting-models)
-BigQuery MLのモデルは全てTensorFlow SavedModel形式でエクスポートできます。
+BigQuery MLのモデルは、ARIMAを除き、全てTensorFlow SavedModel形式でエクスポートできます。
 モデルのバージョン管理やカナリアリリースのフローに載せることができますので安心してご利用ください。
 
 以下のモデルは2020-06-18時点、ドキュメントにありませんがエクスポートできることを確認済みです。

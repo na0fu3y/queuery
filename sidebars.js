@@ -17,6 +17,8 @@ module.exports = {
       'bigquery-access-controls-groups',
       'bigquery-statistical-data-validation',
       'bigquery-cost-performance-tuning',
+      'bigquery-information-schema-jobs',
+      'bigquery-materialized-views',
       'bigquery-data-types-numeric',
       'bigquery-data-types-string-and-bytes',
       'bigquery-data-types-date-and-time',
