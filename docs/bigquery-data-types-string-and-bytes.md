@@ -41,7 +41,13 @@ BigQuery上では、STRING定義の前に`b`をつけて`b'このように'`定�
 それぞれ、暗黙的なキャストは行われないため、必要な時はキャストで相互変換を行います。
 BYTESが無効な文字列だった場合STRINGへのキャストは失敗します。
 
+### BYTES -> STRING
+`CAST(b'BYTES' AS STRING)`を使いましょう。
+後述するSTRING->BYTESと合わせるために`CODE_POINTS_TO_STRING(TO_CODE_POINTS(b'STRING'))`を使っても良いでしょう。
+
+### STRING -> BYTES
 前述のように、BYTESを直接定義できる場合には、`b`プレフィクスを使いますが、使えない場合もあります。
+
 STRINGからBYTESへの変換は、`CODE_POINTS_TO_BYTES(TO_CODE_POINTS('STRING'))`を使いましょう。
 
 `CAST('STRING' AS BYTES)`で定義すると、ハマる値域（0x80 - 0xff）があるため非推奨です。
