@@ -46,7 +46,7 @@ TIME データ型は、特定の日付とは関係なく、時刻を表します
 繰り返しイベントの作成に、TIME と DATE のペアを作って、タイムゾーンの解釈を加えて TIMESTAMP として記録するなども良いでしょう。
 
 DATETIME 型が適切な場面は思いつきませんでした。
-どなたか [プルリクエスト](https://github.com/na0fu3y/na0fu3y.github.io/pulls) または、Twitter で連絡くださいませ。
+どなたか [プルリクエスト](https://github.com/na0fu3y/queuery/pulls) または、Twitter で連絡くださいませ。
 
 
 ## まとめ
