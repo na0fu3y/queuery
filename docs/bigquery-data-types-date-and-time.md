@@ -1,19 +1,11 @@
 ---
-id: date-and-time-data-types-in-bigquery
-title: "BigQuery 日時型"
-author: Naofumi Yamada
-author_title: Data Engineer
-author_url: https://github.com/na0fu3y
-author_image_url: https://avatars0.githubusercontent.com/u/17900178?s=400&v=4
-tags: [bigquery, brainfuck]
+title: "日時型"
 ---
 
-# はじめに
+## はじめに
 [日時型](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#date-type) は、時系列データを扱う際、必須のデータ型です。まずは公式ドキュメントを読み漁りましょう。
 
-<!--truncate-->
-
-# 日時型とは
+## 日時型とは
 BigQuery でグルーピングされているわけではないですが、この記事では日付や時間を扱うことができる型を総称することとします。タイムゾーンを扱うこともできます。
 具体的な型は DATE、DATETIME、TIME、TIMESTAMP の 4 つです。
 
@@ -26,13 +18,13 @@ TIME|時刻型|8 バイト|00:00:00～23:59:59.999999
 TIMESTAMP|タイムスタンプ型|8 バイト|0001-01-01 00:00:00～9999-12-31 23:59:59.999999 UTC
 
 
-## 日付型 DATE
+### 日付型 DATE
 DATE 型は、タイムゾーンに関係なく、日を表します。時間を含みません。
 タイムゾーンの解釈によって示す 24 時間の範囲がずれたり、サマータイムで一日の長さが変わったりします。
 タイムゾーン別に相対化された日付を表したい時に DATE を利用しましょう。
 BigQuery 上では `DATE(2020, 1, 25)` か、`DATE '2020-01-25'` のように定義します。
 
-## 日時型 DATETIME
+### 日時型 DATETIME
 DATETIME は特定の日時を表します。 DATETIME には、年月日、時分秒 + ミリ秒が含まれます。
 DATE 型と同様に、タイムゾーンの解釈によって示す 24 時間の範囲がずれたり、サマータイムで一日の長さが変わったりします。
 タイムゾーン別に相対化された日時を表したい時に DATETIME、絶対時間を表す際にはタイムスタンプを利用しましょう。
@@ -40,13 +32,13 @@ BigQuery 上では `DATETIME(2020, 1, 26, 12, 26, 41)` か、`DATETIME '2020-01-
 STRING に DATETIME プレフィックスで定義する場合、T はスペースでも良く、時間を省略すると 0 時 0 分 0 秒を指します。
 
 
-## 時刻型 TIME
+### 時刻型 TIME
 TIME データ型は、特定の日付とは関係なく、時刻を表します。
 
-## タイムスタンプ型 TIMESTAMP
+### タイムスタンプ型 TIMESTAMP
 タイムスタンプは、タイムゾーンや夏時間などの慣習に関係なく、絶対的な時刻を表します。
 
-## どう使い分けるか
+### どう使い分けるか
 センサや、購買などイベントを記録する場合には、タイムスタンプ型が良いでしょう。
 解釈によって相対化されるべきでないからです。
 
@@ -57,7 +49,7 @@ DATETIME 型が適切な場面は思いつきませんでした。
 どなたか [プルリクエスト](https://github.com/na0fu3y/na0fu3y.github.io/pulls) または、Twitter で連絡くださいませ。
 
 
-# まとめ
+## まとめ
 BigQuery には、DATE、DATETIME、TIME、TIMESTAMP の 4 つの日付型があります。
 用途によって適切に選ぶことで、正しく意思決定に使えるデータ分析ができるようになります。
 特に日時は、解釈する人間によって揺れやすい表現です。前提とするタイムゾーンを共有したり、前もってデータに入れて解釈が揺れないようにすべきです。正しいデータで正しいデータ活用を進めていきましょう。

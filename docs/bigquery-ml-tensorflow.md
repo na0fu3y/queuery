@@ -1,14 +1,8 @@
 ---
-id: bigquery-ml-tensorflow
-title: "BigQuery ML で使える TensorFlow モデルを作る"
-author: Naofumi Yamada
-author_title: Data Engineer
-author_url: https://github.com/na0fu3y
-author_image_url: https://avatars0.githubusercontent.com/u/17900178?s=400&v=4
-tags: [bigquery, tensorflow]
+title: "TensorFlow モデルを作る"
 ---
 
-# はじめに
+## はじめに
 BigQuery ML は [インポートした TensorFlow モデルでの予測](https://cloud.google.com/bigquery-ml/docs/making-predictions-with-imported-tensorflow-models) ができます。
 BigQuery ML で使える TensorFlow モデルを作るために色々なドキュメントを往復したので、まとめておきます。
 BigQuery ML を使って TensorFlow モデルを管理できれば、データソースとの転送を省略したり、
@@ -16,15 +10,13 @@ BigQuery ML を使って TensorFlow モデルを管理できれば、データ�
 
 また SavedModel 形式は、予測に限らず数式を入れたりできるので、brainfuck が実装できるか遊んでみました（敗北）。
 
-<!--truncate-->
-
-# モデルの作り方
+## モデルの作り方
 [TensorFlow モデルをインポートする CREATE MODEL ステートメント](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-tensorflow) にあるように、BigQuery ML で使える TensorFlow モデルは SavedModel として保存されている必要があります。
 SavedModel を実際に作っていきましょう。
 
-## SavedModel を作る
+### SavedModel を作る
 
-### シンプルな SavedModel を作る
+#### シンプルな SavedModel を作る
 [tf.saved_model.save](https://www.tensorflow.org/api_docs/python/tf/saved_model/save) の例から始めましょう。
 例では tf.TensorSpec は `shape=None` と定義されていますが、BigQuery ML から使う場合は必須のようですので、
 `shape=1` とします。
@@ -41,11 +33,11 @@ class Adder(tf.Module):
 
 to_export = Adder()
 tf.saved_model.save(to_export, '/tmp/adder')
-# 認証しておけば Google Storage に直接転送できる
-# tf.saved_model.save(to_export, 'gs://tmp/adder')
+## 認証しておけば Google Storage に直接転送できる
+## tf.saved_model.save(to_export, 'gs://tmp/adder')
 ```
 
-### 作った SavedModel を BigQuery にインポートする
+#### 作った SavedModel を BigQuery にインポートする
 [TensorFlow モデルのインポート](https://cloud.google.com/bigquery-ml/docs/making-predictions-with-imported-tensorflow-models#importing_models) を参考にモデルをインポートします。
 Cloud Storage にある SavedModel を参照できるので、予め転送しておきましょう。
 クエリ 1 つでインポートできるのでとてもお手軽です。
@@ -56,7 +48,7 @@ CREATE OR REPLACE MODEL
     MODEL_PATH='gs://tmp/adder/*')
 ```
 
-### インポートしたモデルを使う
+#### インポートしたモデルを使う
 [インポートした TensorFlow モデルでの予測](https://cloud.google.com/bigquery-ml/docs/making-predictions-with-imported-tensorflow-models#making_predictions_with_imported_models) を参考にモデルで予測します。
 ```sql
 SELECT
@@ -88,7 +80,7 @@ FROM
 
 無事に実行できました。
 
-## サポートされている型
+### サポートされている型
 [サポートされている入力](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-tensorflow#inputs) にありますが、再掲します。
 
 |TensorFlow 型 | BigQuery ML type |
@@ -100,13 +92,13 @@ FROM
 
 2020 年 2 月 12 日現在、対応している入出力型は限定的なため、BigQuery のデータ型とモデル作成時の型の自由度の差異に注意しましょう。
 
-## tf.estimator を使った SavedModel の作り方
+### tf.estimator を使った SavedModel の作り方
 [予測に使用する SavedModel のエクスポート](https://cloud.google.com/ml-engine/docs/tensorflow/exporting-for-prediction) を参考に、情報を補足します。
 
-### tf.estimator.BoostedTreesClassifier の SavedModel を作る
+#### tf.estimator.BoostedTreesClassifier の SavedModel を作る
 [Boosted trees using Estimators](https://www.tensorflow.org/tutorials/estimator/boosted_trees) を参考に作ります。
 
-#### データのロード
+##### データのロード
 ```python
 import numpy as np
 import pandas as pd
@@ -119,7 +111,7 @@ y_train = dftrain.pop('survived')
 y_eval = dfeval.pop('survived')
 ```
 
-#### 入力値の作成
+##### 入力値の作成
 ```python
 NUMERIC_COLUMNS = ['age', 'fare']
 
@@ -138,31 +130,31 @@ def make_input_fn(X, y, n_epochs=None, shuffle=True):
     dataset = tf.data.Dataset.from_tensor_slices((dict(X), y))
     if shuffle:
       dataset = dataset.shuffle(NUM_EXAMPLES)
-    # For training, cycle thru dataset as many times as need (n_epochs=None).
+    ## For training, cycle thru dataset as many times as need (n_epochs=None).
     dataset = dataset.repeat(n_epochs)
-    # In memory training doesn't use batching.
+    ## In memory training doesn't use batching.
     dataset = dataset.batch(NUM_EXAMPLES)
     return dataset
   return input_fn
 
-# Training and evaluation input functions.
+## Training and evaluation input functions.
 train_input_fn = make_input_fn(dftrain, y_train)
 eval_input_fn = make_input_fn(dfeval, y_eval, shuffle=False, n_epochs=1)
 ```
 
-### tf.estimator の作成
+#### tf.estimator の作成
 ```python
 est = tf.estimator.BoostedTreesClassifier(feature_columns,
                                           n_batches_per_layer=1)
 
 est.train(train_input_fn)
 
-# Eval.
-# result = est.evaluate(eval_input_fn)
-# print(pd.Series(result))
+## Eval.
+## result = est.evaluate(eval_input_fn)
+## print(pd.Series(result))
 ```
 
-### SavedModel の作成
+#### SavedModel の作成
 [トレーニング中にサービスグラフを作成する](https://cloud.google.com/ml-engine/docs/tensorflow/exporting-for-prediction#create_serving_graph_during_training) にある json_serving_input_fn を使って、export すると BigQuery ML から理想的な形で呼び出すことができます。
 
 ```python
@@ -178,7 +170,7 @@ path = est.export_saved_model('gs://tmp/btc',
                       json_serving_input_fn)
 ```
 
-#### ここが厄介
+##### ここが厄介
 TensorFlow 1.x は tf.placeholder が使えるので上のコードが動作します。
 TensorFlow 2.x は tf.placeholder が使えないため、以下の serving_input_fn で Proto Buffers を経由して頑張る必要がありそうです。予め Proto Buffers に変換したテーブルを用意するのが解になってしまいます。他には [tensorflow/tensorflow/core/example](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/core/example) の .proto を JavaScript にコンパイルして UDF を作成すると回避できる可能性があります。
 
@@ -188,14 +180,14 @@ serving_input_fn = tf.estimator.export.build_parsing_serving_input_receiver_fn(
 )
 ```
 
-### 作った SavedModel を BigQuery にインポートする
+#### 作った SavedModel を BigQuery にインポートする
 ```sql
 CREATE OR REPLACE MODEL
   example_dataset.imported_tf_model OPTIONS (MODEL_TYPE='TENSORFLOW',
     MODEL_PATH='gs://tmp/btc/1581656284/*')
 ```
 
-### インポートしたモデルを使う
+#### インポートしたモデルを使う
 ```sql
 SELECT
   *
@@ -223,9 +215,9 @@ FROM
 
 
 
-## Brainfuck を実装する
+### Brainfuck を実装する
 
-### UnliftableError に敗北
+#### UnliftableError に敗北
 実装してみたのですが、循環参照が計算グラフに変換できなさそうなエラーと遭遇して断念しました。
 
 ```
@@ -250,13 +242,13 @@ UnliftableError                           Traceback (most recent call last)
 UnliftableError: Unable to lift tensor <tf.Tensor 'Variable/Initializer/ReadVariableOp:0' shape=(64,) dtype=int64> because it depends transitively on placeholder <tf.Operation 'add/cond/Identity_1' type=Placeholder> via at least one path, e.g.: Variable/Initializer/ReadVariableOp (ReadVariableOp) <- strided_slice/_assign (ResourceStridedSliceAssign) <- add_2 (AddV2) <- strided_slice_1 (StridedSlice) <- strided_slice_1/stack_1 (Pack) <- add_1 (AddV2) <- add/cond/Identity_1 (Placeholder)
 ```
 
-### 先行研究
+#### 先行研究
 [EsotericTensorFlow](https://github.com/akimach/EsotericTensorFlow) で、Brainfuck の実装が行われています。
 しかし、Brainfuck のソースコードを渡して計算モデルを作成するもので、計算モデルにソースコードを渡して実行するインタプリタではなさそうです。
 そのため、私は TensorFlow の計算モデルのチューリング完全性を証明することはできませんでした。
 
 
-# おわりに
+## おわりに
 BigQuery ML で使える TensorFlow の SavedModel を作って動作確認しました。
 チューリング完全性の証明には至りませんでしたが、BigQuery ML でテンソルグラフ計算や、
 BigQuery ML 未リリースの BoostedTreesClassifier を実現できました。

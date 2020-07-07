@@ -1,23 +1,15 @@
 ---
-id: data-quality
-title: "BigQuery データ品質のチェック方針"
-author: Naofumi Yamada
-author_title: Data Engineer
-author_url: https://github.com/na0fu3y
-author_image_url: https://avatars0.githubusercontent.com/u/17900178?s=400&v=4
-tags: [bigquery, dataquality]
+title: "データ品質のチェック方針"
 ---
 
-# 目的
+## 目的
 機械学習でデータを利用する際、十分にきれいなデータを入力した方が大抵のケースで有望です。
 汚いデータも使わないよりはマシである可能性もありますが、そのようなデータは継続的に同程度の品質を持っているか検証が困難なことを認識して利用すべきでしょう。
 しかし、十分にきれいなデータかどうかを保証する観点は少ないです。
 
 この記事では、実際的な、データ品質チェックの方法論をまとめました。
 
-<!--truncate-->
-
-# データ品質 3 つ
+## データ品質 3 つ
 ここでは、感覚値により 3 段階のデータ品質を定義します。
 
 品質 | 機械学習 PoC に使えるか | 機械学習プロダクトに使えるか |
@@ -29,11 +21,11 @@ tags: [bigquery, dataquality]
 機械学習 PoC で使えるデータかどうかを検証したら、プロダクションに向けてデータ収集から設計する方が良い場合も多いです。
 データ品質の安定は、意思決定の安定をもたらします。
 
-## 解釈不能
+### 解釈不能
 実世界の何を表しているのか不明なデータ。
 寄与率が出ていても意思決定に使えないため、ゴミになることが多いです。
 
-## 頑張れば使える汚さ
+### 頑張れば使える汚さ
 直接取り込める形ではないけれど、人が頑張ってクレンジング、アノテーションが可能なデータ。
 お客さんから普通にもらうデータは大抵これです。
 目的変数との関係を仮説立てることができるかによって頑張る度合いが変わります。
@@ -41,7 +33,7 @@ tags: [bigquery, dataquality]
 - 別な実態が同じ値として扱われる列（同じ S サイズでも、服と靴、メーカーなど他の列に依存する）
 - 同じ実態が別な値として扱われる列（"S", "Ｓ" が混在する）
 
-## きれい
+### きれい
 直接取り込める形であり、ほとんどクレンジングを必要としないデータ。
 法律が絡む伝票などはきれいなことが多いです。
 - ER 図が存在する
@@ -49,14 +41,14 @@ tags: [bigquery, dataquality]
 - 同じ実態が同じ値として扱われ、別な実態が別な値として扱われている
 
 
-# 観点リスト
+## 観点リスト
 解釈不能なデータを使えるようにはできないですが、頑張れば使える汚さのデータの品質が安定しているかを確かめることはできます。
 ここでは、データの品質が安定しているかチェックするのに利用している観点をまとめます。
 TensorFlow Data Validation でも算出している観点が多いですが、BigQuery 上のデータを素早くチェックするための StandardSQL を併せて紹介します。
 
-## 1回目以降-観点リスト
-### CHECK
-#### 合意された値域（境界値に注意）
+### 1回目以降-観点リスト
+#### CHECK
+##### 合意された値域（境界値に注意）
 データ分析する人と、データ収集する人が違う場合、データの認識にギャップがある可能性もあります。
 値域を確認しましょう。
 
@@ -68,7 +60,7 @@ FROM
   UNNEST([DATE "2000-01-01", "9999-12-31"]) birth_date
 ~~~
 
-#### 論理的に納得できる値域
+##### 論理的に納得できる値域
 論理的にあり得ない数値は、少数であれば精度への影響は少ないでしょうが、クレンジングできる方が好ましいでしょう。
 列の利用用途から説明可能な地域であるか確認しましょう（そうでなければ意思決定に使えない）。
 
@@ -80,7 +72,7 @@ FROM
   UNNEST([-150, 20, 99]) age
 ~~~
 
-#### 同じ実態は同じ値か
+##### 同じ実態は同じ値か
 カテゴリカルっぽい物は全部見てみて、同じ実態を指すデータが同じ値であるかチェックしましょう。
 深層学習では Embedding により似たような空間にいってくれるので、影響は大きくないでしょうが、クレンジングできるに越したことはありません。
 
@@ -96,12 +88,12 @@ ORDER BY
   prefecture
 ~~~
 
-#### 違う実態は違う値か
+##### 違う実態は違う値か
 データだけからでは読みとれないことも多いため、ドメイン知識を持った人間と一緒にデータを確認します。
 データの洗い替えなどが行われる場合には、同じコードが使いまわされたりします。
 時系列で要約統計量を追っていき、変化したタイミングで突き合わせたりする必要があります。
 
-### DEFAULT
+#### DEFAULT
 デフォルト値を入れていると、データの分布が歪みます。
 可能な限り特定して、修正します。
 
@@ -115,7 +107,7 @@ FROM
   UNNEST([DATE "2000-01-01", "9999-12-31"]) birth_date
 ~~~
 
-### PRIMARY KEY
+#### PRIMARY KEY
 リレーショナルデータベースをダンプした物であれば、主キーを特定しましょう。
 主キーが正しく使われていると過信すると、結合の際に列が増えて大変です。
 
@@ -126,7 +118,7 @@ FROM
   UNNEST([0, 1000, 1001]) user_id
 ~~~
 
-### FOREIGN KEY
+#### FOREIGN KEY
 可能なら外部キーも特定し、関係が正しく追えるか確認しましょう。
 結合できないデータが頻発する場合には、その関係を機械学習に盛り込むのを諦めざるを得ないでしょう。
 
@@ -142,57 +134,57 @@ ON
   item_master_item_id = sales_trans_item_id
 ~~~
 
-### 要約統計量
-#### 1 percentile & 99 percentile
+#### 要約統計量
+##### 1 percentile & 99 percentile
 デフォルト値や番兵用レコードなど実態を表現しないデータが現れたりします。
 データの中身は全て一定品質であることを保証するため、番兵用レコードなどはクレンジング対象です。
 
-### その他重要な指標
-#### NULL 率
+#### その他重要な指標
+##### NULL 率
 NOT NULL に限らず、ほぼ NULL でないことを期待していることがあります。
 NULL に引っ張られて、機械学習モデルの性能が落ちることもあります。
 
-#### UNIQUE 率
+##### UNIQUE 率
 UNIQUE に限らず、ほぼ UNIQUE でないことを期待していることがあります。
 UNIQUE が増えると、機械学習モデルの性能が落ちることもあります。
 
-#### 欠損日数
+##### 欠損日数
 毎日欠損なく入っていることが前提のデータは、落ちている日がないか確認しましょう。
 落ちている日は定常データでないため、考慮が必要になることがあります。
 
-#### FALSE 率
-#### 0 率
-#### '' 率
-#### []率
-#### {} 率
-#### 0 未満率
+##### FALSE 率
+##### 0 率
+##### '' 率
+##### []率
+##### {} 率
+##### 0 未満率
 
 
-## 2回目以降-観点リスト
+### 2回目以降-観点リスト
 
-### 要約統計量は大きく変化しないか
+#### 要約統計量は大きく変化しないか
 統計量が変わってると、利用用途が変化した値を含有しており、予測精度の悪化に繋がります。
 機械学習の学習フェーズでは検知困難、推論時に劣化が発覚するので、データチェック時に対応できるのが好ましいです。
-#### 平均
-#### 分散
-#### 標準偏差
-#### 歪度
-#### 尖度
-#### 中央値
-#### 四分位点
-#### 最小値&最大値
-#### 最頻値
+##### 平均
+##### 分散
+##### 標準偏差
+##### 歪度
+##### 尖度
+##### 中央値
+##### 四分位点
+##### 最小値&最大値
+##### 最頻値
 
-## データクレンジング品質の観点
-### 可逆変換
+### データクレンジング品質の観点
+#### 可逆変換
 - 各要素のうちで可逆変換が施された件数と条件。
     - 実業務では PARSE_DATE が多そう。
 
-### 非可逆変換
+#### 非可逆変換
 - 各要素のうちで非可逆変換が施された件数と条件。
     - 実業務では IF, SAFE_CAST が多そう。
 
-### 除去
+#### 除去
 - 各行のうちで除去された件数と条件。
     - 実業務では WHERE, JOIN に相当。
 
@@ -200,8 +192,8 @@ UNIQUE が増えると、機械学習モデルの性能が落ちることもあ�
     - 実業務では SELECT に相当。
 
 
-## 観点チェック SQL
-### CHECK
+### 観点チェック SQL
+#### CHECK
 ~~~sql
 SELECT
   IFNULL(LOGICAL_AND(birth_date<="2020-01-01"),
@@ -210,7 +202,7 @@ FROM
   UNNEST([DATE "2000-01-01", "9999-12-31"]) birth_date
 ~~~
 
-### NOT NULL
+#### NOT NULL
 ~~~sql
 SELECT
   IFNULL(LOGICAL_AND(birth_date IS NOT NULL),
@@ -219,7 +211,7 @@ FROM
   UNNEST([DATE "2000-01-01", "9999-12-31"]) birth_date
 ~~~
 
-## UNIQUE
+### UNIQUE
 ~~~sql
 SELECT
   COUNT(birth_date) = COUNT(DISTINCT birth_date)
@@ -227,14 +219,14 @@ FROM
   UNNEST([DATE "2000-01-01", "9999-12-31"]) birth_date
 ~~~
 
-## PRIMARY KEY
+### PRIMARY KEY
 ~~~sql
 SELECT
   COUNT(*) = COUNT(DISTINCT birth_date)
 FROM
   UNNEST([DATE "2000-01-01", "9999-12-31"]) birth_date
 ~~~
-## FOREIGN KEY
+### FOREIGN KEY
 ~~~sql
 SELECT
   IFNULL(LOGICAL_AND(item_master_item_id IS NOT NULL),
@@ -247,7 +239,7 @@ ON
   item_master_item_id = sales_trans_item_id
 ~~~
 
-### 要約統計量
+#### 要約統計量
 
 各型の SQL を以下のクエリで型変換すれば、UNION ALL できます。
 具体的な実装は、[bq_profile](https://github.com/COLORFULBOARD/bq_profile) にもあります。
@@ -267,7 +259,7 @@ SELECT
   ARRAY(SELECT STRUCT(CAST(v.value AS STRING) AS value, v.count) FROM type_datetime.approx_top_count v) approx_top_count
 ```
 
-#### INT64, NUMERIC, FLOAT64
+##### INT64, NUMERIC, FLOAT64
 ```sql
 SELECT
   AVG(v) avg,
@@ -285,7 +277,7 @@ FROM
   UNNEST([1.0, 2.0, 3.0]) v
 ```
 
-#### BOOL
+##### BOOL
 ```sql
 SELECT
   AVG(IF(v, 1, 0)) avg,
@@ -303,7 +295,7 @@ FROM
   UNNEST([TRUE, FALSE, TRUE]) v
 ```
 
-#### STRING
+##### STRING
 ```sql
 SELECT
   NULL avg,
@@ -321,7 +313,7 @@ FROM
   UNNEST(['A', 'B', 'A']) v
 ```
 
-#### BYTES
+##### BYTES
 ```sql
 SELECT
   NULL avg,
@@ -338,7 +330,7 @@ SELECT
 FROM
   UNNEST([b'aa', b'aa', b'bb']) v
 ```
-#### DATE
+##### DATE
 ```sql
 SELECT
   DATE_FROM_UNIX_DATE(CAST(AVG(UNIX_DATE(v)) AS INT64)) avg,
@@ -355,7 +347,7 @@ SELECT
 FROM
   UNNEST([DATE '2018-01-01']) v
 ```
-#### DATETIME
+##### DATETIME
 ```sql
 SELECT
   DATETIME(TIMESTAMP_MICROS(CAST(AVG(UNIX_MICROS(TIMESTAMP(v))) AS INT64))) avg,
@@ -372,7 +364,7 @@ SELECT
 FROM
   UNNEST([DATETIME '2018-01-01', '2011-01-01']) v
 ```
-#### GEOGRAPHY
+##### GEOGRAPHY
 ```sql
 SELECT
   NULL avg,
@@ -389,7 +381,7 @@ SELECT
 FROM
   UNNEST([ST_GEOGPOINT(45, 45), ST_GEOGPOINT(40, 45)]) v
 ```
-#### TIME
+##### TIME
 ```sql
 SELECT
   TIME_ADD('00:00:00', INTERVAL CAST(AVG(TIME_DIFF(v, '00:00:00', MICROSECOND)) AS INT64) MICROSECOND) avg,
@@ -406,7 +398,7 @@ SELECT
 FROM
   UNNEST([TIME '12:00:00']) v
 ```
-#### TIMESTAMP
+##### TIMESTAMP
 ```sql
 SELECT
   DATETIME(TIMESTAMP_MICROS(CAST(AVG(UNIX_MICROS(v)) AS INT64))) avg,
@@ -423,7 +415,7 @@ SELECT
 FROM
   UNNEST([TIMESTAMP '2018-01-01', '2011-01-01']) v
 ```
-#### ARRAY
+##### ARRAY
 ```sql
 SELECT
   NULL avg,
@@ -440,7 +432,7 @@ SELECT
 FROM
   UNNEST([STRUCT([1] AS x)]) v
 ```
-#### STRUCT
+##### STRUCT
 ばらさないと計算できません。
 ```sql
 SELECT
@@ -459,7 +451,7 @@ FROM
   UNNEST([STRUCT([1] AS x)]) v
 ```
 
-# まとめ
+## まとめ
 ここまで、データの品質のチェック方針をまとめました。
 データソースの信頼性に合わせて、データ品質チェックも設計する必要があります。
 データソースが外にある場合には、この記事で紹介した内容を自動的に計測する仕組みがあると、データ分析の結果の劣化を防ぐことができるでしょう。

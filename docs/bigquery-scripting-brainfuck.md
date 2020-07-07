@@ -1,45 +1,37 @@
 ---
-id: brainfuck-in-bigquery
-title: "BigQuery Scripting で Brainf*ck"
-author: Naofumi Yamada
-author_title: Data Engineer
-author_url: https://github.com/na0fu3y
-author_image_url: https://avatars0.githubusercontent.com/u/17900178?s=400&v=4
-tags: [bigquery, brainfuck]
+title: "Brainf*ck"
 ---
 
-# 書いた動機
+## 書いた動機
 BigQuery 中心アーキテクチャでは、統計分析や機械学習のデータ準備を、Cloud Composer などから SQL を使ったデータ変換によって実現する。しかし、直列でデータ変換を行う場合には [標準 SQL のスクリプト](https://cloud.google.com/bigquery/docs/reference/standard-sql/scripting) で十分なケースもあり、開発をしてつらくないなら採用したい思いがあった。
 先日のサイレントアップデートで、小さなクエリの高速化が行われたことから、十分な速度がでると予想した。
 BigQuery で Brainf*ck を実現して、チューリング完全であることを確認したかった。欲を言えば SELECT 文だけで実現したいが、再帰 WITH 句が使えないことから自分には実現手段がわからなかった。スクリプトならできると思い、やってみた。
 
-<!--truncate-->
 
-
-# 公開データセットに関数公開しました
+## 公開データセットに関数公開しました
 ```sql
 CALL `bqfunc.brainfuck.brainfuck`(input, commands, output);
 ```
 
-# BigQuery スクリプトとは
+## BigQuery スクリプトとは
 1 ジョブで複数のステートメントと制御構文を利用できる。
 よく使うものだけ解説を入れる。
 
-## DECLARE
+### DECLARE
 
 ```sql
 DECLARE name type [ DEFAULT expression]
 ```
 変数宣言。DEFAULT を指定しないと NULL で初期化される。
 
-## SET
+### SET
 
 ```sql
 SET name = expression
 ```
 変数代入。
 
-## IF
+### IF
 
 ```sql
 IF condition THEN
@@ -51,7 +43,7 @@ END IF;
 ```
 条件分岐。
 
-## LOOP
+### LOOP
 
 ```sql
 LOOP
@@ -60,7 +52,7 @@ END LOOP;
 ```
 終了条件のない繰り返し。IF, BREAK と合わせて使う。
 
-## WHILE
+### WHILE
 
 ```sql
 WHILE boolean_expression DO
@@ -69,19 +61,19 @@ END WHILE;
 ```
 終了条件のある繰り返し。
 
-## BREAK
+### BREAK
 
 繰り返しから抜ける。
 
-## CONTINUE
+### CONTINUE
 
 今のブロックをスキップして、繰り返しの先頭に戻る。
 
 
-## RETURN
+### RETURN
 スクリプトを終了する。早期リターンで使う。
 
-## CALL
+### CALL
 
 ```sql
 CALL procedure_name
@@ -89,14 +81,14 @@ CALL procedure_name
 
 プロシージャを呼ぶ。構造化プログラミングに使う。
 
-# 開発してみてつらかったこと
+## 開発してみてつらかったこと
 - BigQuery のジョブ実行時間 6 時間制約が、スクリプト 1 つでかかってくるため、多段に時間がかかるクエリの実行は難しい
 - クエリ履歴が大量の `CREATE TEMP FUNCTION __type_coercion_internal__` で汚染され、複数同時実行するとウェブ UI では結果が追えなくなる
 - ARRAY の 1 つの要素だけ書き換えるコストが高い
 - スクリプトによるオーバヘッドがとても大きく感じる
 - API から結果を回収できない
 
-# 実行結果
+## 実行結果
 |行|f0_|
 |---|---|
 |1|Hello World!|
@@ -108,8 +100,8 @@ CALL procedure_name
 
 うまく動いていそう。
 
-# ソースコード
-## 再帰じゃない版
+## ソースコード
+### 再帰じゃない版
 
 ```sql
 CREATE OR REPLACE PROCEDURE
@@ -218,7 +210,7 @@ SELECT
   CODE_POINTS_TO_STRING(output);
 ```
 
-## 再帰 PROCEDURE 版
+### 再帰 PROCEDURE 版
 PROCEDURE で再帰を使ってきれいにかけると思ったのですが、エラーにより Hello World を動作させることはできませんでした。
 `Out of stack space due to deeply-nested procedure call to a.brainfuck`とのエラーなため、ネストの小さい記述は動きます。
 
@@ -356,6 +348,6 @@ CALL a.brainfuck([], 0, commands, 0, buffer, 0, output);
 SELECT CODE_POINTS_TO_STRING(output);
 ```
 
-# おわりに
+## おわりに
 BigQuery スクリプトで brainf*ck のインタプリタが実装できた。
 再帰プロシージャの移植は不可能と結論づけました。再帰が可能なほど、スタックが詰めませんでした。再帰は 50 までの制約があります。
