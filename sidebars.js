@@ -17,8 +17,9 @@ module.exports = {
       'bigquery-access-controls-groups',
       'bigquery-statistical-data-validation',
       'bigquery-cost-performance-tuning',
-      'bigquery-data-types-date-and-time',
       'bigquery-data-types-numeric',
+      'bigquery-data-types-string-and-bytes',
+      'bigquery-data-types-date-and-time',
     ],
     'BigQuery ML': [
       'bigquery-ml',
