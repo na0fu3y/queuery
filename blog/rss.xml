@@ -45,11 +45,11 @@
             <description><![CDATA[やること]]></description>
         </item>
         <item>
-            <title><![CDATA[【解決済】Cloud IAM でサービスエージェントから全権限を削除すると見えなくなる]]></title>
-            <link>https://queuery.com/blog/invisible-service-agent</link>
-            <guid>invisible-service-agent</guid>
+            <title><![CDATA[Stackdriver Logging を用いて BigQuery テーブルの最終参照日を求める]]></title>
+            <link>https://queuery.com/blog/bigquery-last-reference-date</link>
+            <guid>bigquery-last-reference-date</guid>
             <pubDate>Tue, 21 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[ことの発端]]></description>
+            <description><![CDATA[やりたいこと]]></description>
         </item>
         <item>
             <title><![CDATA[BigQuery で 1 円も溶かさない人の顔 (ZERO BYTE STRUCT を考案した)]]></title>
@@ -59,11 +59,11 @@
             <description><![CDATA[この記事は Qiita と同様の内容です。]]></description>
         </item>
         <item>
-            <title><![CDATA[Stackdriver Logging を用いて BigQuery テーブルの最終参照日を求める]]></title>
-            <link>https://queuery.com/blog/bigquery-last-reference-date</link>
-            <guid>bigquery-last-reference-date</guid>
+            <title><![CDATA[【解決済】Cloud IAM でサービスエージェントから全権限を削除すると見えなくなる]]></title>
+            <link>https://queuery.com/blog/invisible-service-agent</link>
+            <guid>invisible-service-agent</guid>
             <pubDate>Tue, 21 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[やりたいこと]]></description>
+            <description><![CDATA[ことの発端]]></description>
         </item>
         <item>
             <title><![CDATA[BigQuery 情報収集]]></title>
