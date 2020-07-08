@@ -71,6 +71,10 @@ module.exports = {
     gtag: {
       trackingID: 'UA-156581645-3',
     },
+    algolia: {
+      apiKey: 'b93baac33b1861fe5c555416d8c53b77',
+      indexName: 'queuery',
+    },
   },
   presets: [
     [
