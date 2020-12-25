@@ -2,79 +2,86 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://queuery.com/blog</id>
     <title>Queuery Blog</title>
-    <updated>2020-05-11T00:00:00.000Z</updated>
+    <updated>2020-12-25T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://queuery.com/blog"/>
     <subtitle>Queuery Blog</subtitle>
     <icon>https://queuery.com/img/favicon.ico</icon>
     <rights>Copyright © 2020 Queuery. Built with Docusaurus.</rights>
     <entry>
+        <title type="html"><![CDATA[BQ FUN Slackを立ち上げた話]]></title>
+        <id>BQ FUN Slackを立ち上げた話</id>
+        <link href="https://queuery.com/blog/2020/12/25/bq-fun-slack"/>
+        <updated>2020-12-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[BigQuery Advent Calendar 2020最終日、25日目のポエムです。]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Prefect 触ってみた]]></title>
-        <id>prefect</id>
-        <link href="https://queuery.com/blog/prefect"/>
+        <id>Prefect 触ってみた</id>
+        <link href="https://queuery.com/blog/2020/05/11/prefect"/>
         <updated>2020-05-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Prefect 触ってみた]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Python 開発環境の Docker 化]]></title>
-        <id>python-docker</id>
-        <link href="https://queuery.com/blog/python-docker"/>
+        <id>Python 開発環境の Docker 化</id>
+        <link href="https://queuery.com/blog/2020/05/11/python-docker"/>
         <updated>2020-05-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Python の環境 / パッケージ管理色々ありすぎ問題]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Stackdriver Logging でできること]]></title>
-        <id>gcp-logging</id>
-        <link href="https://queuery.com/blog/gcp-logging"/>
+        <id>Stackdriver Logging でできること</id>
+        <link href="https://queuery.com/blog/2020/01/28/gcp-logging"/>
         <updated>2020-01-28T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[この記事は Stackdriver LoggingとBQシンクの差（料金と検索性、保存期間）を知りたい の対応記事です。rhoboro さん、依頼ありがとうございます。]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[BigQuery テーブル同士の一致判定]]></title>
-        <id>two-tables-have-exactly-the-same-data-in-bigquery</id>
-        <link href="https://queuery.com/blog/two-tables-have-exactly-the-same-data-in-bigquery"/>
+        <id>BigQuery テーブル同士の一致判定</id>
+        <link href="https://queuery.com/blog/2020/01/26/two-tables-have-exactly-the-same-data-in-bigquery"/>
         <updated>2020-01-26T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[はじめに]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[AutoML Tables 推論結果データセットの大掃除]]></title>
-        <id>automl-tables-dataset-cleaner</id>
-        <link href="https://queuery.com/blog/automl-tables-dataset-cleaner"/>
+        <id>AutoML Tables 推論結果データセットの大掃除</id>
+        <link href="https://queuery.com/blog/2020/01/25/automl-tables-dataset-cleaner"/>
         <updated>2020-01-25T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[やること]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Stackdriver Logging を用いて BigQuery テーブルの最終参照日を求める]]></title>
-        <id>bigquery-last-reference-date</id>
-        <link href="https://queuery.com/blog/bigquery-last-reference-date"/>
+        <id>Stackdriver Logging を用いて BigQuery テーブルの最終参照日を求める</id>
+        <link href="https://queuery.com/blog/2020/01/21/bigquery-last-reference-date"/>
         <updated>2020-01-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[やりたいこと]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[BigQuery で 1 円も溶かさない人の顔 (ZERO BYTE STRUCT を考案した)]]></title>
-        <id>bigquery-sandbox</id>
-        <link href="https://queuery.com/blog/bigquery-sandbox"/>
+        <id>BigQuery で 1 円も溶かさない人の顔 (ZERO BYTE STRUCT を考案した)</id>
+        <link href="https://queuery.com/blog/2020/01/21/bigquery-sandbox"/>
         <updated>2020-01-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[この記事は Qiita と同様の内容です。]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[【解決済】Cloud IAM でサービスエージェントから全権限を削除すると見えなくなる]]></title>
-        <id>invisible-service-agent</id>
-        <link href="https://queuery.com/blog/invisible-service-agent"/>
+        <id>【解決済】Cloud IAM でサービスエージェントから全権限を削除すると見えなくなる</id>
+        <link href="https://queuery.com/blog/2020/01/21/invisible-service-agent"/>
         <updated>2020-01-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[ことの発端]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[BigQuery 情報収集]]></title>
-        <id>new-bigquery</id>
-        <link href="https://queuery.com/blog/new-bigquery"/>
+        <id>BigQuery 情報収集</id>
+        <link href="https://queuery.com/blog/2020/01/21/new-bigquery"/>
         <updated>2020-01-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[BigQuery の情報収集の仕方。]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[分析 SQL のテストとデータチェックスタイルの提案]]></title>
-        <id>sql-test-and-data-check</id>
-        <link href="https://queuery.com/blog/sql-test-and-data-check"/>
+        <id>分析 SQL のテストとデータチェックスタイルの提案</id>
+        <link href="https://queuery.com/blog/2020/01/21/sql-test-and-data-check"/>
         <updated>2020-01-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[この記事は bqsushi で発表した BigQuery データ前処理の暗黒面 の個人的な解説です。]]></summary>
     </entry>
