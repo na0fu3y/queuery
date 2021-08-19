@@ -47,7 +47,7 @@ FROM
 これらの問題が回避できるテーブルであれば、この対称差を用いたやり方がおすすめです。
 
 ### FULL JOIN 対称差
-テーブルを STRUCT とみなして FULL JOIN して対象差を求めるやり方です。
+テーブルを STRUCT とみなして FULL JOIN して対称差を求めるやり方です。
 対称差が存在しなければ、一致していると見なすことができます。
 上のやり方に対して、STRUCT に対応する優位性があります。
 
@@ -71,8 +71,8 @@ WHERE
 また、JOIN できたかの判別のために Nullable でない列が 1 列分かっている必要があります。
 これは、JOIN 時の STRUCT に対して IS NULL がうまく機能しないことの対応になります。
 
-### TO_JSON_STRING & COUNT
-型への依存をなくすべく TO_JSON_STRING、同値列に対応すべく COUNT を挟んだやり方です。
+### FORMAT("%T") & COUNT
+型への依存をなくすべく FORMAT("%T")、同値列に対応すべく COUNT を挟んだやり方です。
 任意の型と、同値行に対応します。
 
 ```
@@ -80,7 +80,7 @@ SELECT
   *
 FROM (
   SELECT
-    TO_JSON_STRING(table1)s,
+    FORMAT("%T", table1)s,
     COUNT(*)c
   FROM
     table1
@@ -88,7 +88,7 @@ FROM (
     s)l
 FULL JOIN (
   SELECT
-    TO_JSON_STRING(table2)s,
+    FORMAT("%T", table2)s,
     COUNT(*)c
   FROM
     table2
@@ -101,14 +101,13 @@ WHERE
   OR r.c IS NULL
 ```
 
-半面、TO_JSON_STRING で BigQuery 内部容量が 100 MB を超える行に対応できません。
+半面、FORMAT("%T") で BigQuery 内部容量が 100 MB を超える行に対応できません。
 容量上限に妥協でき、ARRAY や GEOGRAPHY を含む任意のテーブルに対応したい場合は、このやり方をお勧めします。
 
 ## 既知のスキーマのテーブル
-スキーマが分かるなら、全ての列を Groupable な型に変換して COUNT すると、列の並び順、同値行、型のデメリットを消し去ることが可能です。
+スキーマが分かるなら、全ての列を Groupable な型に変換して COUNT すると、列の並び順、同値行、型、容量上限のデメリットを消し去ることが可能です。
 GEOGRAPHY 型は、ST_ASBINARY などの関数で、BYTES 型か STRING 型に変換します。
-STRUCT 型は、解体します。ARRAY 型は TO_JSON_STRING で STRING 型に変換します。
-TO_JSON_STRING が同じになる可能性が高い、INT64、NUMERIC、FLOAT64 型同士は特に注意が必要です（他の型も STRING で同値のものを作れます）。
+STRUCT 型は、解体します。ARRAY 型は FORMAT("%T") で STRING 型に変換します。
 より堅牢にやるには、UNNEST WITH OFFSET で同値比較すべきですね。
 
 ```sql
@@ -140,7 +139,7 @@ FROM (
     struct_value.numeric_value numeric_value,
     struct_value.bytes_value bytes_value,
     ST_ASBINARY(geography_value)geography_value,
-    TO_JSON_STRING(array_value)array_value,
+    FORMAT("%T", array_value)array_value,
     COUNT(*)c
   FROM
     table1
@@ -156,7 +155,7 @@ FULL JOIN (
     struct_value.numeric_value numeric_value,
     struct_value.bytes_value bytes_value,
     ST_ASBINARY(geography_value)geography_value,
-    TO_JSON_STRING(array_value)array_value,
+    FORMAT("%T", array_value)array_value,
     COUNT(*)c
   FROM
     table2
