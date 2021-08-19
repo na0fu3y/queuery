@@ -8,7 +8,7 @@
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ja</language>
-        <copyright>Copyright © 2020 Queuery. Built with Docusaurus.</copyright>
+        <copyright>Copyright © 2021 Queuery. Built with Docusaurus.</copyright>
         <item>
             <title><![CDATA[BQ FUN Slackを立ち上げた話]]></title>
             <link>https://queuery.com/blog/2020/12/25/bq-fun-slack</link>
